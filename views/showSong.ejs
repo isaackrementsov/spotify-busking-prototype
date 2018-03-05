@@ -1,0 +1,10 @@
+<% include partials/otherheader %>
+<% include partials/center %>
+<div class="box">
+    <h1><%=song.name%></h1>
+    <audio controls style="margin: 5vh auto;width:30vw;">
+        <source src="/img/<%=song.song%>" type="<%=song.mimetype%>">
+    </audio>
+    <p><%=song.views.length%> view(s).</p>
+</div>
+<% include partials/footer %>

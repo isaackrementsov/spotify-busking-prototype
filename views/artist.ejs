@@ -1,0 +1,46 @@
+<% include partials/otherheader %>
+<% include partials/center %>
+<% if(user.username){%>
+    <div class="inline">
+        <div class="profile">
+            <div class="profile-container block center">
+                    <div class="item" style="margin-top:3vh;">
+                        <img src="/img/<%=user.gravatar%>" class="profile-box">
+                        <div class="layer">
+                            <a href="" class="tiled">
+                                <h1><%=user.username%></h1>
+                                <h2>Artist</h2>
+                            </a>
+                        </div>
+                    </div>
+                <p style="color:transparent;margin-bottom:0vh"> || </p>
+                <p class="descrip"><%=user.bio%></p>              
+            </div>
+            <div class="posts-container block center">
+                <h1 class="heading" style="margin-top:0">Songs</h1>
+                <div class="posts">
+                    <% if(user.username == session.user){%>
+                        <button class="submit" onclick="opendiv('addTrack')">Add song</button>
+                        <form action="/tracks/add" method="post" enctype="multipart/form-data" id="addTrack" style="display:none" class="hidden">
+                            <input type="text" name="name" placeholder="Song name" class="titleUpd">
+                            <label for="file">
+                                <a class="input submit" style="font-size:2.3vh;width:8vh;">Song</a>
+                                <input type="file" name="song" style="display:none !important;" id="file">            
+                            </label>
+                            <input type="submit" class="submit" value="Add">
+                        </form>
+                    <%}%>
+                    <%for(var i = 0; i < songs.length; i++){%>
+                        <a href="/track/<%=songs[i]._id%>" class="shade" style="padding-bottom:0.3vh">
+                            <p><%=songs[i].name%></p>
+                            <p><%=songs[i].views.length%> view(s)</p>
+                        </a>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+<%}else{%>
+    <p><%=user%></p>
+<%}%>
+<% include partials/footer %>

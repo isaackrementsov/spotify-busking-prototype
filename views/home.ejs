@@ -1,0 +1,10 @@
+<% include partials/header %>
+<% include partials/center %>
+<h1>Spotify</h1>
+<% include partials/search %>
+<% if(results.length){%>
+    <% for(var i = 0; i < results.length; i++){%>
+        <a><%=results[i]%></a>
+    <%}%>
+<%}%>
+<% include partials/footer %>

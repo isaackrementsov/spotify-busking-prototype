@@ -1,0 +1,16 @@
+<% include partials/header %>
+<% include partials/center %>
+<div class="box">
+    <h1>Login</h1>
+    <form action="/login" method="post">
+        <select name="type" class="submit">
+            <option value="user">User</option>
+            <option value="artist">Artist</option>
+        </select>
+        <input type="text" class="titleUpd" name="username" placeholder="Username" required>
+        <input type="password" class="titleUpd" name="password" placeholder="Password" required>
+        <input type="submit" value="Login" class="submit">
+    </form>
+</div>
+<% include partials/error %>
+<% include partials/footer %>
